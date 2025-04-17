@@ -15,6 +15,8 @@ class _ProductListState extends State<ProductList> {
   final List<String> filters = const ['Todos', 'Nike', 'Adidas', 'Bata'];
   String selectedFilter = 'Todos';
   final ProductService _productService = ProductService();
+  //late = a variável é inicializada depois -> Tardio
+  //final = a variável não pode ser alterada depois
   late Future<List<Product>> _futureProducts;
 
   @override
@@ -22,6 +24,7 @@ class _ProductListState extends State<ProductList> {
     super.initState();
     _futureProducts = _productService.fetchProducts();
   }
+  // MobX, Provider, Riverpod, BloC, setState (StatefulWidget),
 
   @override
   Widget build(BuildContext context) {
@@ -55,22 +58,23 @@ class _ProductListState extends State<ProductList> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        'Coleção de Calçados',
+                        'Shopping Center',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Buscar',
-                          prefixIcon: Icon(Icons.search),
-                          border: border,
-                          enabledBorder: border,
-                          focusedBorder: border,
-                        ),
-                      ),
-                    ),
                   ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Buscar',
+                      prefixIcon: Icon(Icons.search),
+                      border: border,
+                      enabledBorder: border,
+                      focusedBorder: border,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 100,
@@ -113,10 +117,10 @@ class _ProductListState extends State<ProductList> {
                     itemCount: filtered.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                      crossAxisCount: 3,
                       mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
-                      childAspectRatio: 0.75,
+                      childAspectRatio: 0.6,
                     ),
                     itemBuilder: (context, index) {
                       final product = filtered[index];

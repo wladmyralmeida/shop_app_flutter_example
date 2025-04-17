@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app_flutter/pages/cart_page.dart';
+import 'package:shop_app_flutter/pages/categories_page.dart';
 import 'package:shop_app_flutter/widgets/product_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> pages = const [
     ProductList(),
+    CategoriesPage(),
     CartPage(),
   ];
 
@@ -38,6 +40,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Início',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: 'Categorias',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
